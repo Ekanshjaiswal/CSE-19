@@ -10,10 +10,9 @@
     
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
             background-color: #f4f4f4;
             text-align: center;
-            padding: 20px;
         }
 
         .student-card {
@@ -23,19 +22,14 @@
             margin: 15px auto;
             border-radius: 10px;
             box-shadow: 0px 0px 10px gray;
-            text-align: left; /* Toggled to left for cleaner text inside cards */
         }
 
         .student-card h2 {
             color: #2c3e50;
-            margin-top: 0;
-            font-size: 20px;
         }
 
         .student-card p {
             font-size: 16px;
-            margin: 8px 0;
-            color: #555;
         }
     </style>
 </head>
@@ -44,19 +38,19 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        
-        // 1. Defined the Child Student Component
+
+        // 1. Child Component: Student
         function Student(props) {
             return (
-                <div class="student-card">
+                <div className="student-card">
                     <h2>{props.name}</h2>
-                    <p><strong>Course:</strong> {props.course}</p>
-                    <p><strong>Marks:</strong> {props.marks}%</p>
+                    <p>Course: {props.course}</p>
+                    <p>Marks: {props.marks}</p>
                 </div>
             );
         }
 
-        // 2. Main App Component
+        // 2. Parent Component: App
         function App() {
             return (
                 <div>
@@ -68,11 +62,15 @@
             );
         }
 
-        // 3. React 18 Mounting Logic
-        const container = document.getElementById('root');
+        // 3. Root Mounting Logic (React 18 standard)
+        const container = document.getElementById("root");
         const root = ReactDOM.createRoot(container);
-        root.render(<App />);
-        
+        root.render(
+            <React.StrictMode>
+                <App />
+            </React.StrictMode>
+        );
+
     </script>
 </body>
 </html>
